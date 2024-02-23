@@ -4,10 +4,10 @@ import { HiMenuAlt1 } from "react-icons/hi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link, Route, Routes } from "react-router-dom";
 
-import { Sidebar, UserProfile } from "../components";
+import { Sidebar, Navbar } from "../components";
 import Pins from "./Pins";
 import { client } from "../client";
-import logo from "../assets/kumo-logo.png";
+import logo from "../assets/kumo-light-transparent.png";
 import { userQuery } from "../utils/data";
 
 const Home = () => {
@@ -33,13 +33,13 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex bg-gray-50 md:flex-row flex-col h-screen transition-height duration-75 ease-out">
-      {/* wide screen */}
+    <div className="flex bg-gray-50 md:flex-row flex-col h-screen transition-height duration-75 ease-out overflow-hidden">
+      {/* wide screen sidebar */}
       <div className="hidden md:flex h-screen flex-initial">
         <Sidebar user={user && user} />
       </div>
 
-      {/* narrow screen */}
+      {/* narrow screen header */}
       <div className="md:hidden flex flex-row">
         <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
           <HiMenuAlt1
@@ -51,13 +51,15 @@ const Home = () => {
           <Link to="/">
             <img src={logo} alt="logo" className="w-28" />
           </Link>
+
           <Link to={`user-profile/${user?._id}`}>
             <img src={user?.image} alt="logo" className="w-28" />
           </Link>
         </div>
 
+        {/* narrow screen sidebar */}
         {toggleSidebar && (
-          <div className="fixed w-3/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
+          <div className="fixed w-3/5 bg-white h-screen shadow-md z-10 animate-slide-in">
             <div className="absolute w-full flex justify-end items-center p-2">
               <AiFillCloseCircle
                 fontSize={30}
@@ -70,10 +72,12 @@ const Home = () => {
         )}
       </div>
 
-      <div className="pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
+      {/* content */}
+      <div className="pb-2 flex-1 h-screen overflow-y-auto" ref={scrollRef}>
         <Routes>
-          <Route path="/user-profile/:userId" element={<UserProfile />} />
-          <Route path="/*" element={<Pins user={user && user} />} />
+          <Route path="/user-profile/:userId" element={<Navbar />} />
+          {/* Pass user into pins if it exists */}
+          <Route path="/*" element={<Pins user={user && user} />} /> 
         </Routes>
       </div>
     </div>

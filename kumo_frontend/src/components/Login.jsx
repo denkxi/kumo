@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 import doge from "../assets/doge_samurai.mp4";
-import logo from "../assets/kumo-transparent.png";
+import logo from "../assets/kumo-dark-transparent.png";
 import { client } from "../client";
 
 const Login = () => {
