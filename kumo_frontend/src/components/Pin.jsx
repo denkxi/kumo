@@ -108,9 +108,9 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                   onClick={(e) => e.stopPropagation()}
                 >
                   <BsFillArrowUpRightCircleFill />
-                  {destination.length > 20
-                    ? destination.slice(8, 20) + "..."
-                    : destination.slice(8)}
+                  {destination.length > 15
+                    ? destination.slice(0, 15) + "..."
+                    : destination}
                 </a>
               )}
               {/* Delete button  */}

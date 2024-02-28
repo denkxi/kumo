@@ -95,7 +95,7 @@ const CreatePin = ({ user }) => {
             {loading && <Spinner />}
             {wrongImageType && <p>Wrong image type</p>}
             {!imageAsset ? (
-              <label>
+              <label className="cursor-pointer">
                 <div className="flex flex-col items-center justify-center h-full">
                   <div className="flex flex-col justify-center items-center">
                     <p className="font-bold text-2xl">
@@ -181,7 +181,7 @@ const CreatePin = ({ user }) => {
               </p>
               <select
                 onChange={(e) => setCategory(e.target.value)}
-                className="otline-none w-4/5 text-base border-b-2 border-gray-200 p-2 rounded-md cursor-pointer"
+                className="otline-none w-1/2 text-base border-b-2 border-gray-200 p-2 rounded-md cursor-pointer"
               >
                 <option value="other" className="bg-white">
                   Select category
@@ -190,7 +190,7 @@ const CreatePin = ({ user }) => {
                 {categories.map((category) => (
                   <option
                     key={`category-${category.name}`}
-                    className="text-base border-0 outline-none capitalize bg-white text-black"
+                    className="text-base outline-none capitalize bg-white text-black"
                     value={category.name}
                   >
                     {category.name}
@@ -202,7 +202,7 @@ const CreatePin = ({ user }) => {
               <button
                 type="button"
                 onClick={savePin}
-                className="bg-blue-300 text-black font-bold p-2 rounded-full w-28 outline-none"
+                className="bg-cyan-200 opacity-75 text-black font-bold p-2 rounded-full w-28 outline-none hover:opacity-100"
               >
                 Post Image
               </button>
