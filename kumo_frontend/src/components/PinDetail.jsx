@@ -179,7 +179,7 @@ const PinDetail = ({ user }) => {
             {writingComment && (
               <button
                 type="button"
-                className="bg-cyan-300 opacity-75 text-white rounded-full px-6 py-2 font-semibold text-base outline-none hover hover:opacity-100"
+                className="bg-cyan-300 opacity-75 rounded-full px-6 py-2 font-semibold text-base outline-none hover hover:opacity-100"
                 onClick={addComment}
               >
                 {addingComment ? "Leaving comment..." : "Comment"}
@@ -196,7 +196,9 @@ const PinDetail = ({ user }) => {
           <MasonryLayout pins={pins} />
         </>
       ) : (
-        <Spinner message="Loading more images..." />
+        <div className="mt-4">
+          <Spinner message="Loading more images..." />
+        </div>
       )}
     </>
   );

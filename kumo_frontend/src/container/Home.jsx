@@ -4,7 +4,7 @@ import { HiMenuAlt1 } from "react-icons/hi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link, Route, Routes } from "react-router-dom";
 
-import { Sidebar, Navbar } from "../components";
+import { Sidebar, Navbar, UserProfile } from "../components";
 import Pins from "./Pins";
 import { client } from "../client";
 import logo from "../assets/kumo-light-transparent.png";
@@ -74,7 +74,7 @@ const Home = () => {
       {/* content */}
       <div className="pb-2 flex-1 h-screen overflow-y-auto" ref={scrollRef}>
         <Routes>
-          <Route path="/user-profile/:userId" element={<Navbar />} />
+          <Route path="/user-profile/:userId" element={<UserProfile />} />
           {/* Pass user into pins if it exists */}
           <Route path="/*" element={<Pins user={user && user} />} /> 
         </Routes>

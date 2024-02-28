@@ -3,21 +3,12 @@ import { NavLink, Link } from "react-router-dom";
 import { HiHome } from "react-icons/hi";
 
 import logo from "../assets/kumo-light-transparent.png";
+import { categories } from "../utils/data";
 
 const isNotActiveStyle =
   "flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize";
 const isActiveStyle =
   "flex items-center px-5 gap-3 font-extrabold border-r-2 border-black transition-all duration-200 ease-in-out capitalize";
-
-const categories = [
-  { name: "Animals" },
-  { name: "Wallpapers" },
-  { name: "Photography" },
-  { name: "Gaming" },
-  { name: "Coding" },
-  { name: "Manga" },
-  { name: "Other" },
-];
 
 const Sidebar = ({ user, closeToggle }) => {
   const handleCloseSidebar = () => {
@@ -25,7 +16,7 @@ const Sidebar = ({ user, closeToggle }) => {
   };
 
   return (
-    <div className="flex flex-col justify-between bg-white h-full overflow-y-auto min-w-[210px]">
+    <div className="flex flex-col justify-between bg-white h-full overflow-y-auto min-w-[250px]">
       <div className="flex flex-col">
         <Link
           to="/"
@@ -49,6 +40,8 @@ const Sidebar = ({ user, closeToggle }) => {
           <h3 className="mt-2 px-5 text-base 2xl:text-xl">
             Discover categories
           </h3>
+
+          {/* Iterate categories */}
           {categories.slice(0, categories.length - 1).map((category, index) => (
             <NavLink
               to={`/category/${category.name}`}
@@ -58,16 +51,22 @@ const Sidebar = ({ user, closeToggle }) => {
               onClick={handleCloseSidebar}
               key={`category-${category.name}-${index}`}
             >
+              <img
+                src={category.image}
+                alt="category-pic"
+                className="w-8 h-8 rounded-full shadow-sm"
+              />
               {category.name}
             </NavLink>
           ))}
         </div>
       </div>
 
+      {/* User profile */}
       {user && (
         <Link
           to={`user-profile/${user._id}`}
-          className="flex my-5 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3"
+          className="flex my-5 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-xl mx-3 border-t-4 border-gray-500"
           onClick={handleCloseSidebar}
         >
           <img
