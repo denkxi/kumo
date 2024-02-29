@@ -18,20 +18,20 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
 
   const user = fetchUser();
   const alreadySaved =
-    save?.filter((item) => item.postedBy._id === user.sub)?.length === 1;
+    save?.filter((item) => item?.postedBy?._id === user?.sub)?.length === 1;
 
   const savePin = (id) => {
-    if (!alreadySaved) {
+    if (!alreadySaved && user) {
       client
         .patch(id)
         .setIfMissing({ save: [] })
         .insert("after", "save[-1]", [
           {
             _key: uuidv4(),
-            userId: user.sub,
+            userId: user?.sub,
             postedBy: {
               _type: "postedBy",
-              _ref: user.sub,
+              _ref: user?.sub,
             },
           },
         ])
@@ -114,7 +114,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                 </a>
               )}
               {/* Delete button  */}
-              {postedBy?._id === user.sub && (
+              {postedBy?._id === user?.sub && (
                 <button
                   type="button"
                   onClick={(e) => {

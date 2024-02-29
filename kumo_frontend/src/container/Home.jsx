@@ -1,10 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link, Route, Routes } from "react-router-dom";
 
-import { Sidebar, Navbar, UserProfile } from "../components";
+import { Sidebar, UserProfile } from "../components";
 import Pins from "./Pins";
 import { client } from "../client";
 import logo from "../assets/kumo-light-transparent.png";
