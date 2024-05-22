@@ -3,7 +3,7 @@
 Kumo is platform that allows users to easily share, discover, and interact with images across various categories. Below, you'll find an overview of the key features and functionalities of application.
 
 ## Getting Started
-To begin using our application, simply navigate to [not yet deployed]() and sign in using your Google account. Once logged in, you'll have access to a wide range of images and features.
+To begin using our application, simply navigate to [application website](https://kumopic.netlify.app/) and sign in using your Google account. Once logged in, you'll have access to a wide range of images and features.
 
 ## Key Features
 
